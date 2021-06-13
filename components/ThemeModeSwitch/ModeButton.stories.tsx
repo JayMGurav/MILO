@@ -7,16 +7,16 @@ const ModeSwitchTemplate: Story<ModeSwitchPropsType> = (args) => (
   <ModeSwitch {...args} />
 );
 
-export const LightMode = ModeSwitchTemplate.bind({});
+export const DarkMode = ModeSwitchTemplate.bind({});
 
-LightMode.args = {
+DarkMode.args = {
   springTransition: {
     type: 'spring',
     stiffness: 700,
     damping: 20,
   },
-  label: '🌞',
-  isDarkMode: false,
+  label: '🌜',
+  isDarkMode: true,
   changeMode: () => void 0,
 };
 
