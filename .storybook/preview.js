@@ -1,11 +1,13 @@
 import React from 'react';
 import GloBalStyles from '../styles/GlobalStyles';
-import ThemeProvider from '../context/themeContext';
+import StoryBookPreviewThemeModeButton from './theme/ModeButton';
+import ThemeProvider from './theme/themeContext';
 
 export const decorators = [
   (Story) => (
     <ThemeProvider>
       <GloBalStyles />
+      <StoryBookPreviewThemeModeButton />
       <Story />
     </ThemeProvider>
   ),

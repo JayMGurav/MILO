@@ -13,6 +13,8 @@ module.exports = {
     builder: 'webpack5',
   },
   webpackFinal: async (baseConfig) => {
+    baseConfig.output.clean = true;
+
     baseConfig.resolve.plugins = [
       new TsconfigPathsPlugin({ extensions: baseConfig.resolve.extensions }),
     ];
@@ -20,7 +22,14 @@ module.exports = {
     baseConfig.plugins.push(
       new CopyPlugin({
         patterns: [
-          { from: path.resolve(__dirname, './utils/'), to: './utils/' },
+          {
+            from: path.resolve(__dirname, './theme/setInitialTheme.js'),
+            to: './theme/setInitialTheme.js',
+          },
+          {
+            from: path.resolve(__dirname, './theme/themeConfig.js'),
+            to: './theme/themeConfig.js',
+          },
         ],
       })
     );

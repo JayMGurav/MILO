@@ -23,4 +23,7 @@ DarkMode.args = {
 export default {
   title: 'ModeSwitch',
   component: ModeSwitch,
+  parameters: {
+    layout: 'centered',
+  },
 };
