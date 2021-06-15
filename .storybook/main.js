@@ -27,8 +27,8 @@ module.exports = {
             to: './theme/setInitialTheme.js',
           },
           {
-            from: path.resolve(__dirname, './theme/themeConfig.js'),
-            to: './theme/themeConfig.js',
+            from: path.resolve(__dirname, './theme/colorThemeConfig.js'),
+            to: './theme/colorThemeConfig.js',
           },
         ],
       })
@@ -36,16 +36,16 @@ module.exports = {
 
     return baseConfig;
   },
-  babel: async (options) => {
-    options.presets.push('next/babel');
-    options.plugins.push([
-      'styled-components',
-      {
-        ssr: true,
-        displayName: true,
-        preprocess: false,
-      },
-    ]);
-    return options;
-  },
+  // babel: async (options) => {
+  //   options.presets.push('next/babel');
+  //   options.plugins.push([
+  //     'styled-components',
+  //     {
+  //       ssr: true,
+  //       displayName: true,
+  //       preprocess: false,
+  //     },
+  //   ]);
+  //   return options;
+  // },
 };

@@ -2,14 +2,13 @@ import {
   COLORS,
   COLOR_MODE_KEY,
   INITIAL_COLOR_MODE_CSS_PROPERTY,
-} from '@/styles/themeConfig';
+} from '@/styles/colorThemeConfig';
 import { createContext, useEffect, useMemo, useState } from 'react';
 
-
-type ColorMode = 'dark' | 'light'
+type ColorMode = 'dark' | 'light';
 
 export const ThemeContext = createContext<{
-  colorMode?:ColorMode;
+  colorMode?: ColorMode;
   changeColorMode?: (mode: ColorMode) => void;
 }>({});
 

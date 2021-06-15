@@ -1,5 +1,5 @@
 import React from 'react';
-import GloBalStyles from '../styles/GlobalStyles';
+import GloBalStyles from './theme/GlobalStyles';
 import StoryBookPreviewThemeModeButton from './theme/ModeButton';
 import ThemeProvider from './theme/themeContext';
 

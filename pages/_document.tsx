@@ -5,7 +5,7 @@ import {
   COLORS,
   COLOR_MODE_KEY,
   INITIAL_COLOR_MODE_CSS_PROPERTY,
-} from '@/styles/themeConfig';
+} from '@/styles/colorThemeConfig';
 /**
  * COLORS = theme colors
  * COLOR_MODE = Key for localstorage

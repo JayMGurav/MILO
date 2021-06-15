@@ -2,7 +2,7 @@ import {
   COLORS,
   COLOR_MODE_KEY,
   INITIAL_COLOR_MODE_CSS_PROPERTY,
-} from './themeConfig.js';
+} from './colorThemeConfig.js';
 import { createContext, useEffect, useMemo, useState } from 'react';
 
 type ColorMode = 'dark' | 'light';
