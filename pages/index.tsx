@@ -1,10 +1,11 @@
-import ThemeModeSwitch from '@/components/ThemeModeSwitch';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 function Home() {
   return (
     <>
-      <h1>Hello world</h1>
-      <ThemeModeSwitch />
+      <Header />
+      <Footer />
     </>
   );
 }

@@ -3,6 +3,10 @@ export const COLORS = {
     light: 'hsl(207, 100%, 99%)',
     dark: 'hsl(0, 0%, 2%)',
   },
+  foreground: {
+    light: 'hsl(0, 0%, 95%)',
+    dark: 'hsl(0, 0%, 6%)',
+  },
   text: {
     light: 'hsl(0, 0%, 2%)',
     dark: 'hsl(207, 100%, 99%)',

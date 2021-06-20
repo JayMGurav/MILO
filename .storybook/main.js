@@ -36,16 +36,16 @@ module.exports = {
 
     return baseConfig;
   },
-  // babel: async (options) => {
-  //   options.presets.push('next/babel');
-  //   options.plugins.push([
-  //     'styled-components',
-  //     {
-  //       ssr: true,
-  //       displayName: true,
-  //       preprocess: false,
-  //     },
-  //   ]);
-  //   return options;
-  // },
+  babel: async (options) => {
+    options.presets.push('next/babel');
+    options.plugins.push([
+      'styled-components',
+      {
+        ssr: true,
+        displayName: true,
+        preprocess: false,
+      },
+    ]);
+    return options;
+  },
 };

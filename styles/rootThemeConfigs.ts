@@ -96,8 +96,8 @@ const rootThemeConfigs = css`
     --size-max: max-content;
     --size-min: min-content;
     --size-full: 100%;
-    --size-"3xs": 14rem;
-    --size-"2xs": 16rem;
+    --size-3xs: 14rem;
+    --size-2xs: 16rem;
     --size-xs: 20rem;
     --size-sm: 24rem;
     --size-md: 28rem;

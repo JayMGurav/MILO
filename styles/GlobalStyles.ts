@@ -3,7 +3,8 @@ import rootThemeConfigs from './rootThemeConfigs';
 
 const GloBalStyles = createGlobalStyle`
   ${rootThemeConfigs}
-  body {
+
+  html,body {
     width: 100%;
     margin: 0;
     padding:0;
@@ -15,10 +16,6 @@ const GloBalStyles = createGlobalStyle`
   }
   *+*{
     box-sizing: border-box;
-  }
-  h1,h2,h3,h4,h5,h6 {
-    /* font-family: var(--system-fonts-heading); */
-    font-family: var(--system-fonts-heading);
   }
   pre, code {
     font-family: var(--system-fonts-mono);

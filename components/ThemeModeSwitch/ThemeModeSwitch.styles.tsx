@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const ModeButtonDiv = styled(m.div)<{ isDarkMode: boolean }>`
   width: 50px;
   height: 16px;
-  background-color: var(--color-gray3);
+  background-color: var(--color-foreground);
   display: flex;
   border-radius: 16px;
   align-items: center;
