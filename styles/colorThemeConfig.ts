@@ -12,16 +12,16 @@ export const COLORS = {
     dark: 'hsl(207, 100%, 99%)',
   },
   gray1: {
-    light: 'hsl(204, 15%, 94%)',
-    dark: 'hsl(0,0%, 6%)',
+    light: 'hsl(0, 0%, 88%)',
+    dark: 'hsl(0, 0%, 8%)',
   },
   gray2: {
-    light: 'hsl(0, 0%, 88%)',
-    dark: 'hsl(0,0%, 12%)',
+    light: 'hsl(0, 0%, 83%)',
+    dark: 'hsl(0, 0%, 10%)',
   },
   gray3: {
-    light: 'hsl(0, 0%, 82%)',
-    dark: 'hsl(0,0%, 18%)',
+    light: 'hsl(0, 0%, 70%)',
+    dark: 'hsl(0,0%, 14%)',
   },
 };
 

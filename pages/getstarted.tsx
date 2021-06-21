@@ -1,16 +1,17 @@
 import Footer from '@/components/Footer';
+import GetStarted from '@/components/GetStarted';
 import HeadIntroSection from '@/components/HeaderIntroSection';
 import Layout from '@/components/Layout';
 
-function Home() {
+function Login() {
   return (
     <>
       <Layout>
-        <HeadIntroSection getStarted />
+        <GetStarted />
       </Layout>
       <Footer />
     </>
   );
 }
 
-export default Home;
+export default Login;

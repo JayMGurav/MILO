@@ -4,7 +4,7 @@ import ThemeModeSwitch from '@/components/ThemeModeSwitch';
 
 import { HeaderNavbarContainer } from './HeaderNavbar.styles';
 
-function Header() {
+function HeaderNavbar() {
   return (
     <HeaderNavbarContainer>
       <NextLink href="/">
@@ -17,4 +17,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderNavbar;
