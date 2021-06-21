@@ -1,10 +1,15 @@
 import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import HeadIntroSection from '@/components/HeaderIntroSection';
+import Header from '@/components/HeaderNavbar';
+import Layout from 'styledComponents/Layout';
 
 function Home() {
   return (
     <>
-      <Header />
+      <Layout>
+        <Header />
+        <HeadIntroSection getStarted />
+      </Layout>
       <Footer />
     </>
   );

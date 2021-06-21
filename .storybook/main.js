@@ -27,6 +27,10 @@ module.exports = {
             to: './theme/setInitialTheme.js',
           },
           {
+            from: path.resolve(__dirname, '../public'),
+            to: './',
+          },
+          {
             from: path.resolve(__dirname, './theme/colorThemeConfig.js'),
             to: './theme/colorThemeConfig.js',
           },
