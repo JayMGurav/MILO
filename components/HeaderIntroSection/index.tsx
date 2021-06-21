@@ -4,7 +4,7 @@ import {
   HeaderJumboContent,
 } from './HeaderIntroSection.styles';
 
-function HeadIntroSection({ getStarted }) {
+function HeadIntroSection({ getStarted }: { getStarted?: boolean }) {
   return (
     <HeadJumboSectionContainer>
       <HeaderJumboContent>
