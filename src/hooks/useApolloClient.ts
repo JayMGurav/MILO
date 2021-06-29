@@ -5,7 +5,7 @@ export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
 // milo gateway api
 const miloGatewayLink = new HttpLink({
-  uri: 'http://localhost:3000/api/graphql',
+  uri: 'https://milo-web.vercel.app/api/graphql',
   credentials: 'same-origin',
 });
 
