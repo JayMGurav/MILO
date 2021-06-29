@@ -2,11 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/styledComponents/*": ["styledComponents/*"],
-      "@/styles/*": ["styles/*"],
-      "@/types/*": ["types/*"],
-      "@/context/*": ["context/*"]
+      "@/components/*": ["src/components/*"],
+      "@/styledComponents/*": ["src/styledComponents/*"],
+      "@/styles/*": ["src/styles/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/types/*": ["src/types/*"],
+      "@/context/*": ["src/context/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
