@@ -1,5 +1,6 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import React from 'react';
+import Terser from 'terser';
+import { ServerStyleSheet } from 'styled-components';
 
 import {
   COLORS,
@@ -39,27 +40,70 @@ function setColorByTheme() {
   });
 }
 
-const minifiedCorrectedSetColorByTheme = () => {
+const MinifiedCorrectedSetColorByTheme = () => {
   const corrected = String(setColorByTheme)
     .replace("'🌈'", JSON.stringify(COLORS))
     .replace('🔑', COLOR_MODE_KEY)
     .replace('🏺', INITIAL_COLOR_MODE_CSS_PROPERTY);
 
-  const called = `(${corrected})()`;
-
-  return called;
+  let calledFunction = `(${corrected})()`;
+  calledFunction = Terser.minify(calledFunction).code;
+  return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />;
 };
 
-class Document extends NextDocument {
+export function FallbackStyles() {
+  const cssVariableString = Object.entries(COLORS).reduce(
+    (acc, [name, colorByTheme]) => {
+      return `${acc}\n--color-${name}: ${colorByTheme.dark};`;
+    },
+    ''
+  );
+
+  const wrappedInSelector = `html { ${cssVariableString} }`;
+
+  return <style>{wrappedInSelector}</style>;
+}
+
+class MyDocument extends NextDocument {
+  static async getInitialProps(ctx) {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          // useful for wrapping the whole react tree
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+          // useful for wrapping in a per-page basis
+          enhanceComponent: (Component) => Component,
+        });
+
+      // Run the parent `getInitialProps`, it now includes the custom `renderPage`
+      const initialProps = await NextDocument.getInitialProps(ctx);
+
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
+  }
+
   render() {
     return (
-      <Html>
-        <Head />
+      <Html lang="en">
+        <Head>
+          <FallbackStyles />
+        </Head>
         <body>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: minifiedCorrectedSetColorByTheme(),
-            }}></script>
+          <MinifiedCorrectedSetColorByTheme />
           <Main />
           <NextScript />
           <div id="modalMountPoint" />
@@ -69,4 +113,4 @@ class Document extends NextDocument {
   }
 }
 
-export default Document;
+export default MyDocument;
