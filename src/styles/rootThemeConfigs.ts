@@ -123,7 +123,8 @@ const rootThemeConfigs = css`
     --radius-full: 9999px;
 
     /* colors */
-    --colors-iconGray: hsl(0, 0%, 30%);
+    --color-iconGray: hsl(0, 0%, 30%);
+    --color-grayText: hsl(0, 0%, 30%);
     --color-red50: hsl(0, 100%, 98%);
     --color-red100: hsl(0, 95%, 92%);
     --color-red200: hsl(0, 97%, 85%);

@@ -2,7 +2,7 @@ import { motion as m } from 'framer-motion';
 import styled from 'styled-components';
 
 export const ModeButtonDiv = styled(m.div)<{ isDarkMode: boolean }>`
-  width: 50px;
+  width: 44px;
   height: 16px;
   background-color: var(--color-foreground);
   display: flex;
@@ -14,9 +14,13 @@ export const ModeButtonDiv = styled(m.div)<{ isDarkMode: boolean }>`
 
 export const ModeButton = styled(m.button)`
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   background-color: var(--color-text);
   border: none;
   border-radius: 50%;
+  font-size: var(--system-fontSize-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

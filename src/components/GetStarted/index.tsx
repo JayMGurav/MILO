@@ -8,10 +8,8 @@ import { Send } from 'react-feather';
 
 import { GetStartedContainer, GetStartedBox } from './GetStarted.styles';
 import Input from '../Input';
-import PushableButton from '@/styledComponents/PushableButton';
 import { IS_REGISTERED_USER } from 'src/gql/user/queries.graphql';
 import SignUpModal from './SignUpModal';
-import VerifyEmailModal from './VerifyEmailModal';
 import { LOGIN } from 'src/gql/user/mutation.graphql';
 import Button from '../Button';
 
@@ -69,7 +67,6 @@ function GetStarted() {
               },
             });
           }
-          // console.log(did);
         }
       },
     });
@@ -104,10 +101,6 @@ function GetStarted() {
           type="submit"
           label={loadingMsg || 'Lets go'}
           icon={<Send width="16" height="16" fill="none" />}
-          // disabled={errors.email || loading}
-          // bg="#B2F5EA"
-          // color="#000"
-          // bgTo="#B2F5EA"
         />
       </GetStartedBox>
       <SignUpModal

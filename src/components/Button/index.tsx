@@ -1,4 +1,3 @@
-import { IconSm } from '@/styledComponents/Icon';
 import { ReactNode } from 'react';
 import { StyledButton } from './Button.styles';
 
