@@ -37,7 +37,7 @@ function DashboardSideNavBar() {
           icon={<Users size="18px" fill="none" color="var(--color-iconGray)" />}
           label="Groups"
           to="/dashboard/groups"
-          active={asPath == '/dashboard/qna'}
+          active={asPath == '/dashboard/groups'}
         />
         <NavItem
           icon={
@@ -52,16 +52,16 @@ function DashboardSideNavBar() {
             <BookOpen size="18px" fill="none" color="var(--color-iconGray)" />
           }
           label="Universities"
-          to="/dashboard/blogs"
-          active={asPath == '/dashboard/blogs'}
+          to="/dashboard/universities"
+          active={asPath == '/dashboard/universities'}
         />
         <NavItem
           icon={
             <Briefcase size="18px" fill="none" color="var(--color-iconGray)" />
           }
           label="Companies"
-          to="/dashboard/blogs"
-          active={asPath == '/dashboard/blogs'}
+          to="/dashboard/companies"
+          active={asPath == '/dashboard/companies'}
         />
       </DashboardSideNavList>
     </DashboardSideNavBarContainer>

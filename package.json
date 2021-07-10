@@ -13,6 +13,8 @@
     "@apollo/client": "^3.3.20",
     "@apollo/federation": "^0.25.1",
     "@apollo/gateway": "^0.29.1",
+    "@firebase/app": "^0.6.28",
+    "@firebase/storage": "^0.5.6",
     "apollo-server-micro": "^2.25.1",
     "cookie": "^0.4.1",
     "framer-motion": "4",
@@ -25,7 +27,8 @@
     "react-feather": "^2.0.9",
     "react-hook-form": "^7.9.0",
     "styled-components": "^5.3.0",
-    "terser": "4.6.13"
+    "terser": "4.6.13",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",

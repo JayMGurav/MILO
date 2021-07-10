@@ -2,10 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/utils/*": ["src/utils/*"],
+      "@/hooks/*": ["src/hooks/*"],
       "@/components/*": ["src/components/*"],
       "@/styledComponents/*": ["src/styledComponents/*"],
       "@/styles/*": ["src/styles/*"],
-      "@/hooks/*": ["src/hooks/*"],
       "@/types/*": ["src/types/*"],
       "@/context/*": ["src/context/*"]
     },
@@ -23,6 +24,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/**/**/*.tsx"],
   "exclude": ["node_modules"]
 }

@@ -8,7 +8,6 @@ import useScreenType from '@/hooks/useScreenType';
 
 function DashboardShell({ children }) {
   const screenType = useScreenType();
-
   return (
     <DashboardShellContainer>
       {(function () {

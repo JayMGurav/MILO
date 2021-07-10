@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const DashboardShellContainer = styled.div`
+export const DashboardShellContainer = styled(div)`
   display: flex;
   align-items: flex-start;
   gap: 2ch;

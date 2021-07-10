@@ -2,6 +2,7 @@ import NextLink from 'next/link';
 import styled from 'styled-components';
 
 const NavItemContainer = styled.a<{ active: boolean }>`
+  position: relative;
   margin: 0;
   padding: var(--size-2) var(--size-8) var(--size-2) var(--size-4);
   border-radius: var(--radius-lg);
@@ -12,6 +13,8 @@ const NavItemContainer = styled.a<{ active: boolean }>`
   text-decoration: none;
   color: ${({ active }) =>
     active ? 'var(--color-text)' : 'var(--color-grayText)'};
+  background: ${({ active }) =>
+    active ? 'var(--color-foreground)' : 'var(--color-background)'};
   font-weight: var(--system-fontWeight-semibold);
   letter-spacing: var(--system-letterSpacing-wide);
   span {
@@ -19,7 +22,7 @@ const NavItemContainer = styled.a<{ active: boolean }>`
     line-height: 0.99;
     border-radius: 50%;
     background: ${({ active }) =>
-      active ? 'var(--color-background)' : 'var(--color-foreground)'};
+      active ? 'var(--color-primary1)' : 'var(--color-foreground)'};
     box-shadow: var(--system-shadow-1);
   }
   :hover {
@@ -29,6 +32,18 @@ const NavItemContainer = styled.a<{ active: boolean }>`
       background: var(--color-primary1);
     }
   }
+`;
+
+const MotionActiveDiv = styled(m.div)`
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  background: var(--color-primary1);
 `;
 
 interface INavItemProps {
