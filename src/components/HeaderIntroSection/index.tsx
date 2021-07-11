@@ -1,5 +1,6 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import Button from '../Button';
 import {
   HeadJumboSectionContainer,
   HeaderJumboContent,
@@ -14,9 +15,12 @@ function HeadIntroSection({ getStarted }: { getStarted?: boolean }) {
         <h1>Meet Interact Excel</h1>
         <p>Get noticed and get your burning question answered.</p>
         {getStarted && (
-          <button onClick={() => router.push('/getstarted')}>
-            Get Started
-          </button>
+          <Button
+            label="Get Started"
+            pushable={true}
+            color="var(--color-background)"
+            onClick={() => router.push('/getstarted')}
+          />
         )}
       </HeaderJumboContent>
     </HeadJumboSectionContainer>

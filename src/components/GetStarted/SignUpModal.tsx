@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import { Magic } from 'magic-sdk';
 
 import Modal from '../Modal';
@@ -11,17 +11,32 @@ import { IS_USERNAME_UNIQUE } from 'src/gql/user/queries.graphql';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { LOGIN, SIGNUP } from 'src/gql/user/mutation.graphql';
 import { useRouter } from 'next/router';
+import useFileUploader from '@/hooks/useFileUploader';
+import ProfileImageUploader from '../ProfileImageUploader';
+import ProgressBar from '../ProgressBar';
 
 const SignUpForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: var(--size-2);
+`;
+const SignUpProfileImageContainer = styled.div`
+  margin-top: var(--size-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 `;
 
 const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
   const router = useRouter();
+  const [loadingMsg, setLoadingMsg] = useState<string>('');
+  const { url, uploadProgress, upload, handleFileChange } =
+    useFileUploader('profile_images');
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
     getValues,
@@ -31,8 +46,8 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
     onCompleted: ({ login }) => {
       console.log(login);
       reset({ fullname: '', username: '' });
-      // verifyModalRef.current.close();
       router.push('/dashboard');
+      setLoadingMsg('');
     },
   });
 
@@ -45,6 +60,7 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
           showUI: true,
         });
         if (did) {
+          setLoadingMsg('Logging in');
           login({
             variables: {
               did,
@@ -60,6 +76,7 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
       if (!isUserNameUnique) {
         errors.username.message = 'Username is not unique';
       } else {
+        setLoadingMsg('Setting up!!');
         signup({
           variables: {
             user: {
@@ -74,7 +91,9 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    setLoadingMsg('Saving image');
+    upload({ ...data, email: userEmail });
+    setLoadingMsg('Verifying..');
     checkIsUserNameUnique({
       variables: {
         username: data.username,
@@ -88,7 +107,11 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
       confetti={false}
       bg="var(--color-foreground)">
       <SignUpForm onSubmit={handleSubmit(onSubmit)}>
-        <h3>Complete your signup process</h3>
+        {/* <strong>Complete your signup process</strong> */}
+        <SignUpProfileImageContainer>
+          <ProfileImageUploader url={url} handleFileChange={handleFileChange} />
+          <ProgressBar progress={uploadProgress} />
+        </SignUpProfileImageContainer>
         <Input
           type="text"
           label="fullname"
@@ -107,8 +130,8 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
               message: 'Minimum 3 character long',
             },
             maxLength: {
-              value: 6,
-              message: 'Maximum 6 character long',
+              value: 10,
+              message: 'Maximum 10 character long',
             },
             pattern: {
               value: /^[a-zA-Z0-9]+$/,
@@ -117,7 +140,11 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
           })}
           placeholder="john_doe"
         />
-        <Button type="submit" label="signup" />
+        <Button
+          type="submit"
+          disabled={Boolean(loadingMsg.length)}
+          label={loadingMsg || 'signup'}
+        />
       </SignUpForm>
     </Modal>
   );

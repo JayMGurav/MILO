@@ -34,18 +34,6 @@ const NavItemContainer = styled.a<{ active: boolean }>`
   }
 `;
 
-const MotionActiveDiv = styled(m.div)`
-  display: inline-block;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 3px;
-  height: 60%;
-  transform: translate(-50%, -50%);
-  border-radius: 3px;
-  background: var(--color-primary1);
-`;
-
 interface INavItemProps {
   icon: React.ReactNode;
   label: string;

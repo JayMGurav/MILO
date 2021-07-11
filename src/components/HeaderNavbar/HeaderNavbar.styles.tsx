@@ -7,4 +7,8 @@ export const HeaderNavbarContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `;

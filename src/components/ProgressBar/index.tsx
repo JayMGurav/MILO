@@ -10,6 +10,9 @@ function ProgressBar({
   return (
     <ProgressContainer width={width}>
       <ProgressBarDiv
+        initial={{
+          width: 0,
+        }}
         animate={{
           width: `${progress}%`,
         }}

@@ -7,10 +7,15 @@ import {
   StyledImage,
 } from './ProfileImageUploader.styles';
 
-function ProfileImageUploader() {
-  const { url, uploadProgress, upload, handleFileChange } =
-    useFileUploader('profile_images');
-
+// const { url, uploadProgress, upload, handleFileChange } =
+//   useFileUploader('profile_images');
+function ProfileImageUploader({
+  url,
+  handleFileChange,
+}: {
+  url: string | ArrayBuffer;
+  handleFileChange: (e: any) => void;
+}) {
   return (
     <>
       <UploadProfileDiv>
@@ -32,10 +37,11 @@ function ProfileImageUploader() {
           />
         )}
       </UploadProfileDiv>
-      <button onClick={() => upload({ username: 'jay' })}>click</button>
-      <ProgressBar progress={uploadProgress} />
     </>
   );
 }
 
 export default ProfileImageUploader;
+
+/* <button onClick={() => upload({ username: 'jay' })}>click</button>
+<ProgressBar progress={uploadProgress} />  */

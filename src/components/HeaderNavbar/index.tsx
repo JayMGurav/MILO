@@ -7,10 +7,10 @@ import { HeaderNavbarContainer } from './HeaderNavbar.styles';
 function HeaderNavbar() {
   return (
     <HeaderNavbarContainer>
-      <NextLink href="/">
-        <span>
+      <NextLink href="/" passHref>
+        <a>
           <strong>🤝MILO</strong>
-        </span>
+        </a>
       </NextLink>
       <ThemeModeSwitch />
     </HeaderNavbarContainer>
