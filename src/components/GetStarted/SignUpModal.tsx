@@ -32,6 +32,7 @@ const SignUpProfileImageContainer = styled.div`
 const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
   const router = useRouter();
   const [loadingMsg, setLoadingMsg] = useState<string>('');
+  const [errorMsg, setErrorMsg] = useState<string>('');
   const { url, uploadProgress, upload, handleFileChange } =
     useFileUploader('profile_images');
   const {
@@ -48,6 +49,10 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
       reset({ fullname: '', username: '' });
       router.push('/dashboard');
       setLoadingMsg('');
+    },
+    onError: (err) => {
+      setErrorMsg(err.message);
+      console.log(err.message);
     },
   });
 
@@ -69,6 +74,10 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
         }
       }
     },
+    onError: (err) => {
+      setErrorMsg(err.message);
+      console.log(err.message);
+    },
   });
 
   const [checkIsUserNameUnique] = useLazyQuery(IS_USERNAME_UNIQUE, {
@@ -87,6 +96,10 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
           },
         });
       }
+    },
+    onError: (err) => {
+      setErrorMsg(err.message);
+      console.log(err.message);
     },
   });
 

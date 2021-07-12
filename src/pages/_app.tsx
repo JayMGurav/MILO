@@ -1,6 +1,5 @@
 import { ApolloProvider } from '@apollo/client';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
-import { AnimatePresence } from 'framer-motion';
 
 import GloBalStyles from '@/styles/GlobalStyles';
 import ThemeProvider from '@/context/themeContext';
@@ -12,16 +11,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider>
       <GloBalStyles />
       <ApolloProvider client={apolloClient}>
-        {/* <AnimatePresence exitBeforeEnter> */}
         <Component {...pageProps} />
-        {/* </AnimatePresence> */}
       </ApolloProvider>
     </ThemeProvider>
   );
 }
 
-// export function reportWebVitals(metric: NextWebVitalsMetric) {
-//   console.log(metric)
-// }
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  console.log(metric);
+}
 
 export default MyApp;
