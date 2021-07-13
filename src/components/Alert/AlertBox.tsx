@@ -17,24 +17,30 @@ function AlertBox({ type, title, description }: AlertProps) {
   const iconBgColorObj = {
     error: {
       icon: <XCircle size="24px" />,
-      background: '',
+      background: 'var(--color-red200)',
+      iconBackground: 'var(--color-red300)',
     },
     success: {
       icon: <CheckCircle size="24px" />,
       background: '',
+      iconBackground: 'var(--color-red300)',
     },
     info: {
       icon: <Info size="24px" />,
       background: '',
+      iconBackground: 'var(--color-red300)',
     },
     warning: {
       icon: <AlertTriangle size="24px" />,
       background: '',
+      iconBackground: 'var(--color-red300)',
     },
   };
   return (
     <AlertBoxDiv bg={iconBgColorObj[type].background}>
-      <AlertIcon>{iconBgColorObj[type].icon}</AlertIcon>
+      <AlertIcon bg={iconBgColorObj[type].iconBackground}>
+        {iconBgColorObj[type].icon}
+      </AlertIcon>
       <AlertTitle>{title}</AlertTitle>
       <AlertDescription>{description}</AlertDescription>
     </AlertBoxDiv>

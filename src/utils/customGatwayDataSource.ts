@@ -1,5 +1,6 @@
 import { RemoteGraphQLDataSource } from '@apollo/gateway';
 import { getCookie } from './cookies';
+// import parseCookies from '@/utils/parseCookies';
 
 class CustomDataSource extends RemoteGraphQLDataSource {
   willSendRequest({ request, context }) {
@@ -25,3 +26,10 @@ class CustomDataSource extends RemoteGraphQLDataSource {
 }
 
 export default CustomDataSource;
+
+// const cookies = parseCookies(rawCookies);
+// cookies.forEach(({ cookieName, cookieValue, options }) => {
+//   if (context && context.res) {
+//     context.res.cookie(cookieName, cookieValue, { ...options });
+//   }
+// });

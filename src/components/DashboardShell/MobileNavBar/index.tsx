@@ -52,7 +52,7 @@ function MobileNavBar() {
             </ThemeBtnDiv>
             <br />
             <ProfileNavItem>
-              <Avatar /> <span>Jay Gurav</span>
+              <Avatar src="/jaygurav.jpg" size={32} /> <span>Jay Gurav</span>
             </ProfileNavItem>
             <hr />
             <NavItem

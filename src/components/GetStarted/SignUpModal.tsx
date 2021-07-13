@@ -1,3 +1,5 @@
+import dynamic from 'next/dynamic';
+
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { forwardRef, useState } from 'react';
@@ -14,6 +16,15 @@ import { useRouter } from 'next/router';
 import useFileUploader from '@/hooks/useFileUploader';
 import ProfileImageUploader from '../ProfileImageUploader';
 import ProgressBar from '../ProgressBar';
+
+const AlertMessage = dynamic(() => import('../Alert/AlertMessage'));
+
+interface ISignUpObj {
+  fullname: string;
+  username: string;
+  email: string;
+  avatar?: string | ArrayBuffer;
+}
 
 const SignUpForm = styled.form`
   display: flex;
@@ -86,6 +97,14 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
         errors.username.message = 'Username is not unique';
       } else {
         setLoadingMsg('Setting up!!');
+        const signUpObj: ISignUpObj = {
+          fullname: getValues('fullname'),
+          username: getValues('username'),
+          email: userEmail,
+        };
+        if (url) {
+          signUpObj.avatar = url;
+        }
         signup({
           variables: {
             user: {
@@ -120,6 +139,9 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
       confetti={false}
       bg="var(--color-foreground)">
       <SignUpForm onSubmit={handleSubmit(onSubmit)}>
+        {errorMsg && (
+          <AlertMessage type="error" title="Error" description={errorMsg} />
+        )}
         {/* <strong>Complete your signup process</strong> */}
         <SignUpProfileImageContainer>
           <ProfileImageUploader url={url} handleFileChange={handleFileChange} />

@@ -1,11 +1,9 @@
 import LayoutContainer from '@/styledComponents/LayoutContainer';
-
-import DashboardHeaderNav from '@/components/DashboardHeaderNav';
 import DashboardShell from '@/components/DashboardShell';
-
+import DashboardHeaderNav from '@/components/DashboardHeaderNav';
 import ProfilePageHeader from '@/components/ProfilePage/ProfilePageHeader';
 
-export default function Try() {
+export default function Profile() {
   return (
     <LayoutContainer>
       <DashboardHeaderNav />

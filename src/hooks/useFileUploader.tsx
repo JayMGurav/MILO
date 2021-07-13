@@ -33,7 +33,7 @@ function useFileUploader(folderName: string) {
       },
       console.error,
       function onComplete() {
-        fileRef.getDownloadURL().then((url) => {
+        fileRef.getDownloadURL().then((url: string) => {
           setFile(null);
           setURL(url);
         });

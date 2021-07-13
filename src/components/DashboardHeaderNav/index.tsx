@@ -33,7 +33,7 @@ function DashboardHeaderNav() {
       {screenType == 'lg' && <NavItemsBar />}
       {(screenType == 'lg' || screenType == 'md') && (
         <NavItemsBarContainer>
-          <Avatar />
+          <Avatar src="/jaygurav.jpg" size={32} />
           <ThemeModeSwitch />
         </NavItemsBarContainer>
       )}
