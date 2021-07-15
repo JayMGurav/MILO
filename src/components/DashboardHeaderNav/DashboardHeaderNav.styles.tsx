@@ -7,8 +7,11 @@ export const DashboardHeaderNavbarContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 2ch;
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `;
 
 export const NavItemsBarContainer = styled.nav`

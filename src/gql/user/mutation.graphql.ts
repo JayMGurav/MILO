@@ -11,6 +11,7 @@ export const LOGIN = gql`
       id
       username
       fullname
+      avatar
     }
   }
 `;

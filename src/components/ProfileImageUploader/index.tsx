@@ -1,14 +1,10 @@
-import useFileUploader from '../../hooks/useFileUploader';
 import DefaultAvatar from '@/components/Avatar/DefaultAvatar';
-import ProgressBar from '@/components/ProgressBar';
 import {
   UploadProfileDiv,
   ProfileImageUploaderInput,
   StyledImage,
 } from './ProfileImageUploader.styles';
 
-// const { url, uploadProgress, upload, handleFileChange } =
-//   useFileUploader('profile_images');
 function ProfileImageUploader({
   url,
   handleFileChange,
@@ -19,7 +15,7 @@ function ProfileImageUploader({
   return (
     <>
       <UploadProfileDiv>
-        <DefaultAvatar width="50px" height="50px" />
+        <DefaultAvatar size={50} />
         <ProfileImageUploaderInput
           type="file"
           id="profileImg"
@@ -42,6 +38,3 @@ function ProfileImageUploader({
 }
 
 export default ProfileImageUploader;
-
-/* <button onClick={() => upload({ username: 'jay' })}>click</button>
-<ProgressBar progress={uploadProgress} />  */

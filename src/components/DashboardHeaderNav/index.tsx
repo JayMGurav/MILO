@@ -1,4 +1,4 @@
-import useViewportSize from '@/hooks/useViewportSize';
+import { useQuery } from '@apollo/client';
 import NextLink from 'next/link';
 
 import ThemeModeSwitch from '../ThemeModeSwitch';
@@ -9,6 +9,7 @@ import {
 import Avatar from '@/components/Avatar';
 import MobileNavBar from '../DashboardShell/MobileNavBar';
 import useScreenType from '@/hooks/useScreenType';
+import { GET_ME } from '@/gql/user/queries.graphql';
 
 function NavItemsBar() {
   return (
@@ -21,19 +22,26 @@ function NavItemsBar() {
 }
 
 function DashboardHeaderNav() {
+  const { data } = useQuery(GET_ME, {
+    fetchPolicy: 'cache-and-network',
+  });
   const screenType = useScreenType();
 
   return (
     <DashboardHeaderNavbarContainer>
       <NextLink href="/">
-        <span>
+        <a>
           <strong>🤝MILO</strong>
-        </span>
+        </a>
       </NextLink>
       {screenType == 'lg' && <NavItemsBar />}
       {(screenType == 'lg' || screenType == 'md') && (
         <NavItemsBarContainer>
-          <Avatar src="/jaygurav.jpg" size={32} />
+          <NextLink href="/dashboard/profile" passHref>
+            <a>
+              <Avatar src={data?.me?.avatar} size={32} />
+            </a>
+          </NextLink>
           <ThemeModeSwitch />
         </NavItemsBarContainer>
       )}

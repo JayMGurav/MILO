@@ -4,13 +4,12 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { Magic } from 'magic-sdk';
-import { useLazyQuery, useMutation } from '@apollo/client';
+import { useLazyQuery, useMutation, gql } from '@apollo/client';
 import { Send } from 'react-feather';
 
 import { GetStartedContainer, GetStartedBox } from './GetStarted.styles';
 import Input from '../Input';
 import { IS_REGISTERED_USER } from 'src/gql/user/queries.graphql';
-// import SignUpModal from './SignUpModal';
 import { LOGIN } from 'src/gql/user/mutation.graphql';
 import Button from '../Button';
 
@@ -37,8 +36,27 @@ function GetStarted() {
   } = useForm<IFormInputs>();
 
   const [login] = useMutation(LOGIN, {
-    onCompleted: ({ login }) => {
-      console.log(login);
+    update(cache, { data: { login } }) {
+      cache.modify({
+        fields: {
+          me(existingMydata = {}) {
+            const newMeRef = cache.writeFragment({
+              data: login,
+              fragment: gql`
+                fragment NewMe on User {
+                  id
+                  username
+                  fullname
+                  avatar
+                }
+              `,
+            });
+            return { ...existingMydata, newMeRef };
+          },
+        },
+      });
+    },
+    onCompleted: ({ Login }) => {
       setLoadingMsg('');
       reset({ email: '' });
       // verifyModalRef.current.close();

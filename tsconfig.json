@@ -5,6 +5,7 @@
       "@/utils/*": ["src/utils/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/components/*": ["src/components/*"],
+      "@/gql/*": ["src/gql/*"],
       "@/styledComponents/*": ["src/styledComponents/*"],
       "@/styles/*": ["src/styles/*"],
       "@/types/*": ["src/types/*"],

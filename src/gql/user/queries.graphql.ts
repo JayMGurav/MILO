@@ -11,8 +11,31 @@ export const IS_USERNAME_UNIQUE = gql`
     isUserNameUnique(username: $username)
   }
 `;
+
 export const IS_LOGGED_IN = gql`
   query {
     isLoggedIn
+  }
+`;
+
+export const GET_ME = gql`
+  query GetMe {
+    me {
+      id
+      username
+      avatar
+    }
+  }
+`;
+
+export const GET_MY_PROFILE_DATA = gql`
+  query GetMe {
+    me {
+      id
+      username
+      fullname
+      avatar
+      createdAt
+    }
   }
 `;

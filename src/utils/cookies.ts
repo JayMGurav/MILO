@@ -1,16 +1,24 @@
 import { serialize, parse } from 'cookie';
+import { ICookieOptions } from './parseCookies';
 
 export const MAX_AGE = 7 * 24 * 3600000; // 1 week
 
-export function setCookie(res: any, cookieName: string, token: string) {
-  const cookie = serialize(cookieName, token, {
-    maxAge: MAX_AGE,
-    expires: new Date(Date.now() + MAX_AGE * 1000),
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    path: '/',
-    sameSite: 'lax',
-  });
+const defaultCookieOptions: ICookieOptions = {
+  maxAge: MAX_AGE,
+  expires: new Date(Date.now() + MAX_AGE * 1000),
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  path: '/',
+  sameSite: 'lax',
+};
+
+export function setCookie(
+  res: any,
+  cookieName: string,
+  cookieValue: string,
+  options: ICookieOptions = defaultCookieOptions
+) {
+  const cookie = serialize(cookieName, cookieValue, { ...options });
 
   res.setHeader('Set-Cookie', cookie);
 }

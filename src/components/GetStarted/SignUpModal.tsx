@@ -96,21 +96,24 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
       if (!isUserNameUnique) {
         errors.username.message = 'Username is not unique';
       } else {
-        setLoadingMsg('Setting up!!');
-        const signUpObj: ISignUpObj = {
+        const userData = {
           fullname: getValues('fullname'),
           username: getValues('username'),
           email: userEmail,
         };
+        setLoadingMsg('Saving image');
+        const uploadedImageUrl = await upload({ ...userData });
+        setLoadingMsg('Setting up!!');
+        const signUpObj: ISignUpObj = {
+          ...userData,
+        };
         if (url) {
-          signUpObj.avatar = url;
+          signUpObj.avatar = uploadedImageUrl;
         }
         signup({
           variables: {
             user: {
-              fullname: getValues('fullname'),
-              username: getValues('username'),
-              email: userEmail,
+              ...signUpObj,
             },
           },
         });
@@ -123,8 +126,6 @@ const SignUpModal = ({ signUpModalRef, verifyModalRef, userEmail }) => {
   });
 
   const onSubmit = (data) => {
-    setLoadingMsg('Saving image');
-    upload({ ...data, email: userEmail });
     setLoadingMsg('Verifying..');
     checkIsUserNameUnique({
       variables: {

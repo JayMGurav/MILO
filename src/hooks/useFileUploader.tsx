@@ -22,8 +22,9 @@ function useFileUploader(folderName: string) {
     };
   }
 
-  function upload(customMetadata = {}) {
+  async function upload(customMetadata = {}) {
     const uuid = uuidv4();
+    // let imageUrl = '';
     const fileRef = storageRef.child(folderName).child(uuid);
     const uploadTask = fileRef.put(file, { customMetadata });
     uploadTask.on(
@@ -32,13 +33,16 @@ function useFileUploader(folderName: string) {
         setUploadProgress(progressPercentage(totalBytes, bytesTransferred)); // progress of upload
       },
       console.error,
-      function onComplete() {
-        fileRef.getDownloadURL().then((url: string) => {
-          setFile(null);
-          setURL(url);
-        });
+      async function onComplete() {
+        const url = await fileRef.getDownloadURL();
+        setFile(null);
+        setURL(url);
       }
     );
+
+    await uploadTask;
+    const uploadedImageUrl = await fileRef.getDownloadURL();
+    return uploadedImageUrl;
   }
 
   return { url, uploadProgress, upload, handleFileChange };

@@ -1,3 +1,12 @@
+export interface ICookieOptions {
+  maxAge?: number;
+  expires?: Date;
+  path?: string;
+  sameSite?: string;
+  secure?: boolean;
+  httpOnly?: boolean;
+}
+
 export default function parseCookies(rawCookies: string) {
   if (!rawCookies.includes('=')) {
     throw new Error(
@@ -73,7 +82,7 @@ export default function parseCookies(rawCookies: string) {
       }
     );
 
-    const options = {};
+    const options: ICookieOptions = {};
 
     objectifyedCookieProperties.forEach((objectifyedCookieProperty) => {
       Object.entries(objectifyedCookieProperty).forEach(([key, value]) => {
