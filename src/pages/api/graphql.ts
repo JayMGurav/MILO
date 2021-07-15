@@ -24,7 +24,7 @@ const apolloServer = new ApolloServer({
   introspection: true,
   playground: {
     settings: {
-      'request.credentials': 'include',
+      'request.credentials': 'same-origin',
     },
   },
   plugins: [ApolloServerPluginInlineTraceDisabled()],

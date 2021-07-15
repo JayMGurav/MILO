@@ -20,7 +20,6 @@ export async function getServerSideProps(context) {
   if (client) {
     const { data } = await client.query({
       query: IS_LOGGED_IN,
-      fetchPolicy: 'network-only',
       context: {
         headers: {
           ...context.req.headers,
