@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { ApolloGateway } from '@apollo/gateway';
 import { ApolloServerPluginInlineTraceDisabled } from 'apollo-server-core';
-import CustomDataSource from 'src/utils/customGatwayDataSource';
+import CustomDataSource from 'src/utils/customGatewayDataSource';
 
 const serviceList = [
   { name: 'Users', url: 'https://milo-user-service.vercel.app/api/graphql' },

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NextLink from 'next/link';
 
 import {
   MenuDiv,
@@ -51,9 +52,11 @@ function MobileNavBar() {
               <ThemeModeSwitch />
             </ThemeBtnDiv>
             <br />
-            <ProfileNavItem>
-              <Avatar src="/jaygurav.jpg" size={32} /> <span>Jay Gurav</span>
-            </ProfileNavItem>
+            <NextLink href="/dashboard/profile" passHref>
+              <ProfileNavItem>
+                <Avatar src="/jaygurav.jpg" size={32} /> <span>Jay Gurav</span>
+              </ProfileNavItem>
+            </NextLink>
             <hr />
             <NavItem
               icon={

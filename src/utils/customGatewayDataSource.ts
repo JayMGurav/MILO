@@ -20,20 +20,20 @@ class CustomDataSource extends RemoteGraphQLDataSource {
       const cookies = parseCookies(rawCookies);
       cookies.forEach(({ cookieName, cookieValue, options }) => {
         if (context && context.res) {
-          // context.res.cookie(cookieName, cookieValue, { ...options });
           setCookie(context.res, cookieName, cookieValue, { ...options });
         }
       });
-
-      // if (context && context.res) {
-      //   context.res.setHeader('Set-Cookie', rawCookies);
-      // }
     }
     return response;
   }
 }
 
 export default CustomDataSource;
+
+// context.res.cookie(cookieName, cookieValue, { ...options });
+// if (context && context.res) {
+//   context.res.setHeader('Set-Cookie', rawCookies);
+// }
 
 // const cookies = parseCookies(rawCookies);
 // cookies.forEach(({ cookieName, cookieValue, options }) => {

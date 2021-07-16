@@ -14,7 +14,7 @@ const NavItemContainer = styled.a<{ active: boolean }>`
   color: ${({ active }) =>
     active ? 'var(--color-text)' : 'var(--color-grayText)'};
   background: ${({ active }) =>
-    active ? 'var(--color-foreground)' : 'var(--color-background)'};
+    active ? 'var(--color-foreground)' : 'inherit'};
   font-weight: var(--system-fontWeight-semibold);
   letter-spacing: var(--system-letterSpacing-wide);
   span {

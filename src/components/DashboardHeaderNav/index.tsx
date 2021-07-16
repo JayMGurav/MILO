@@ -15,7 +15,7 @@ function NavItemsBar() {
   return (
     <NavItemsBarContainer>
       <NextLink href="/about">About</NextLink>
-      <NextLink href="/terms">Terms an conditions</NextLink>
+      <NextLink href="/terms">Terms and conditions</NextLink>
       <NextLink href="/privacy">Privacy</NextLink>
     </NavItemsBarContainer>
   );

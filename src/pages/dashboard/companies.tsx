@@ -1,12 +1,15 @@
 import LayoutContainer from '@/styledComponents/LayoutContainer';
 import DashboardShell from '@/components/DashboardShell';
 import DashboardHeaderNav from '@/components/DashboardHeaderNav';
+import ComingSoon from '@/components/ComingSoon';
 
 export default function Companies() {
   return (
     <LayoutContainer>
       <DashboardHeaderNav />
-      <DashboardShell>Companies</DashboardShell>
+      <DashboardShell>
+        <ComingSoon />
+      </DashboardShell>
     </LayoutContainer>
   );
 }

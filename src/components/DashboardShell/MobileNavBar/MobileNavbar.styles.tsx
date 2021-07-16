@@ -32,7 +32,7 @@ export const Div = styled(m.div)`
   overflow: hidden;
 `;
 
-export const ProfileNavItem = styled.div`
+export const ProfileNavItem = styled.a`
   display: flex;
   align-items: center;
   gap: 2ch;
@@ -40,6 +40,7 @@ export const ProfileNavItem = styled.div`
   padding: var(--size-2) var(--size-4);
   font-weight: var(--system-fontWeight-semibold);
   letter-spacing: var(--system-letterSpacing-wide);
+  text-decoration: none;
   color: var(--color-iconGray);
   cursor: pointer;
   :hover {

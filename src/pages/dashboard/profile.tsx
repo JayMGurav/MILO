@@ -5,21 +5,24 @@ import DashboardShell from '@/components/DashboardShell';
 import DashboardHeaderNav from '@/components/DashboardHeaderNav';
 import ProfilePageHeader from '@/components/ProfilePage/ProfilePageHeader';
 import ProfileDanger from '@/components/ProfilePage/ProfileDanger';
-import { GET_MY_PROFILE_DATA } from '@/gql/user/queries.graphql';
 import ProfileInfo from '@/components/ProfilePage/ProfileInfo';
-import { Loader } from 'react-feather';
+import Loading from '@/components/Loading';
+import { GET_MY_PROFILE_DATA } from '@/gql/user/queries.graphql';
 
 export default function Profile() {
   const { data, loading } = useQuery(GET_MY_PROFILE_DATA, {
     fetchPolicy: 'cache-and-network',
   });
 
+  if (loading) {
+    return <Loading size={20} fill="var(--color-primary)" />;
+  }
+
   const me = data?.me;
   return (
     <LayoutContainer>
       <DashboardHeaderNav />
       <DashboardShell>
-        {loading && <Loader size="48px" />}
         {me && (
           <>
             <ProfilePageHeader profileImageUrl={me?.avatar} />

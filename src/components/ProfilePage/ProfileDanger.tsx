@@ -9,7 +9,7 @@ import { LOGOUT } from '@/gql/user/mutation.graphql';
 const DangerDiv = styled.div`
   width: var(--size-full);
   margin-top: var(--size-10);
-  padding: var(--size-4) 0;
+  padding: var(--size-4);
   text-align: center;
   border-radius: var(--radius-md);
   background: var(--color-red200);
@@ -23,12 +23,16 @@ const DangerDiv = styled.div`
 const DangerActionsDiv = styled.div`
   margin-top: var(--size-10);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 2ch;
   button {
     color: var(--color-text);
     font-size: var(--system-fontSize-md);
+    @media only screen and (max-width: 680px) {
+      flex: 1 1 18ch;
+    }
   }
 `;
 

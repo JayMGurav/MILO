@@ -13,6 +13,7 @@ function DashboardShell({ children }) {
       {(function () {
         switch (screenType) {
           case 'sm':
+          case 'xs':
             return (
               <>
                 <DashboardMainContainer>{children}</DashboardMainContainer>
