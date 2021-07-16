@@ -17,6 +17,7 @@ export default function Dashboard() {
 }
 export async function getServerSideProps(context) {
   const client = initializeApollo();
+  console.log(context.req.headers);
   if (client) {
     const { data } = await client.query({
       query: IS_LOGGED_IN,

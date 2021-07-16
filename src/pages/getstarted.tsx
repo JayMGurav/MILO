@@ -16,6 +16,7 @@ function Login() {
 }
 
 export async function getServerSideProps(context) {
+  console.log(context.req.headers);
   const client = initializeApollo();
   if (client) {
     const { data } = await client.query({
