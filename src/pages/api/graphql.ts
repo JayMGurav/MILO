@@ -4,8 +4,8 @@ import { ApolloServerPluginInlineTraceDisabled } from 'apollo-server-core';
 import CustomDataSource from 'src/utils/customGatewayDataSource';
 
 const serviceList = [
-  { name: 'Users', url: 'https://milo-user-service.vercel.app/api/graphql' },
-  // { name: 'Users', url: 'http://localhost:3001/api/graphql' },
+  // { name: 'Users', url: 'https://milo-user-service.vercel.app/api/graphql' },
+  { name: 'Users', url: 'http://localhost:3001/api/graphql' },
 ];
 
 process.setMaxListeners(serviceList.length * 2);

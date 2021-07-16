@@ -15,7 +15,14 @@ export default function Profile() {
   });
 
   if (loading) {
-    return <Loading size={20} fill="var(--color-primary)" />;
+    return (
+      <LayoutContainer>
+        <DashboardHeaderNav />
+        <DashboardShell>
+          <Loading size={20} fill="var(--color-primary)" />
+        </DashboardShell>
+      </LayoutContainer>
+    );
   }
 
   const me = data?.me;
