@@ -39,7 +39,10 @@ function DashboardHeaderNav() {
         <NavItemsBarContainer>
           <NextLink href="/dashboard/profile" passHref>
             <a>
-              <Avatar src={data?.me?.avatar} size={32} />
+              <Avatar
+                src={data?.me?.avatar}
+                size={32}
+              />
             </a>
           </NextLink>
           <ThemeModeSwitch />

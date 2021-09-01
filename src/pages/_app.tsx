@@ -1,17 +1,20 @@
+import { ReactNode } from 'react';
 import { ApolloProvider } from '@apollo/client';
-import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import { NextWebVitalsMetric } from 'next/app';
 
 import GloBalStyles from '@/styles/GlobalStyles';
 import ThemeProvider from '@/context/themeContext';
 import { useApollo } from '@/hooks/useApolloClient';
+import { Props } from '@/types/next';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: Props) {
   const apolloClient = useApollo(pageProps.initialApolloState);
+  const getLayout = Component.getLayout || ((page: ReactNode) => page);
   return (
     <ThemeProvider>
       <GloBalStyles />
       <ApolloProvider client={apolloClient}>
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </ApolloProvider>
     </ThemeProvider>
   );

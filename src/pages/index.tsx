@@ -3,14 +3,14 @@ import HeadIntroSection from '@/components/HeaderIntroSection';
 import Layout from '@/components/Layout';
 
 function Home() {
-  return (
-    <>
-      <Layout>
-        <HeadIntroSection getStarted />
-      </Layout>
-      <Footer />
-    </>
-  );
+  return <HeadIntroSection getStarted />;
 }
+
+Home.getLayout = (page) => (
+  <>
+    <Layout>{page}</Layout>
+    <Footer />
+  </>
+);
 
 export default Home;

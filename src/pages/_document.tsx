@@ -72,10 +72,8 @@ class MyDocument extends NextDocument {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          // useful for wrapping the whole react tree
           enhanceApp: (App) => (props) =>
             sheet.collectStyles(<App {...props} />),
-          // useful for wrapping in a per-page basis
           enhanceComponent: (Component) => Component,
         });
 

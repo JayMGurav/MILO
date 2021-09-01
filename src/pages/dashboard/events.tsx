@@ -1,15 +1,8 @@
-import LayoutContainer from '@/styledComponents/LayoutContainer';
-import DashboardShell from '@/components/DashboardShell';
-import DashboardHeaderNav from '@/components/DashboardHeaderNav';
+import DashboardLayout from '@/components/DashboardLayout';
 import ComingSoon from '@/components/ComingSoon';
 
 export default function Events() {
-  return (
-    <LayoutContainer>
-      <DashboardHeaderNav />
-      <DashboardShell>
-        <ComingSoon />
-      </DashboardShell>
-    </LayoutContainer>
-  );
+  return <ComingSoon />;
 }
+
+Events.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;

@@ -1,15 +1,8 @@
-import LayoutContainer from '@/styledComponents/LayoutContainer';
-import DashboardShell from '@/components/DashboardShell';
-import DashboardHeaderNav from '@/components/DashboardHeaderNav';
+import DashboardLayout from '@/components/DashboardLayout';
 import ComingSoon from '@/components/ComingSoon';
 
-export default function Dashboard() {
-  return (
-    <LayoutContainer>
-      <DashboardHeaderNav />
-      <DashboardShell>
-        <ComingSoon />
-      </DashboardShell>
-    </LayoutContainer>
-  );
+export default function DashboardHome() {
+  return <ComingSoon />;
 }
+
+DashboardHome.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
